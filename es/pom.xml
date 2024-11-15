@@ -14,6 +14,7 @@
     <groupId>org.example</groupId>
     <artifactId>es</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -51,5 +52,22 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.1</version>  <!-- 版本应与你的 Spring Boot 版本匹配 -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>  <!-- 确保在打包时执行 repackage 目标 -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
