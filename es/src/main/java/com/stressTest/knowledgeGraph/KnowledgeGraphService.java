@@ -157,13 +157,15 @@ public class KnowledgeGraphService {
         List<String> gradeTagIds = Lists.newArrayList("5f96c08eb9c81600013a9783", "5f96c08eb9c81600013a959d", "5f96c08eb9c81600013a97cb", "5f96c08eb9c81600013a9662", "5f96c08ab9c81600013a8ffd", "5f96c08ab9c81600013a8ffe", "5f96c08ab9c81600013a9000", "5f96c08ab9c81600013a9001", "5f96c08ab9c81600013a9004", "5f96c08ab9c81600013a9005");
 
         for (int i = 0; i < request.getCount(); i++) {
+            int id = Math.abs(new Random().nextInt());
             KnowledgeGraphMarkResultEntity entity = new KnowledgeGraphMarkResultEntity();
-            entity.setResourceId("id_" + new Random().nextLong());
+            entity.setResourceId("id_" + id);
             entity.setResourceType(getRandomElement(resourceTypes));
             entity.setTagIdList(getRandomElements(tagIds, 10));
             entity.setResourceSubtype(entity.getResourceType());
             entity.setSectionTagIds(getRandomElements(sectionTagIds, 3));
             entity.setGradeTagIds(getRandomElements(gradeTagIds, 3));
+            entity.setSort(id);
             entity.setCreateAtTime(new Date().getTime());
             entity.setUpdateAtTime(new Date().getTime());
             insert(entity);
